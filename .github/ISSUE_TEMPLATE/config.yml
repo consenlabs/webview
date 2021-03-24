@@ -1,0 +1,4 @@
+contact_links:
+  - name: Help or Questions
+    url: https://github.com/consenlabs/fe-public-template/discussions
+    about: This issue tracker is not for support questions. Please refer to the Discussions.
