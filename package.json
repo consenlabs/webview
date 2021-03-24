@@ -14,12 +14,13 @@
     "build": "yarn clear && rollup -c"
   },
   "files": [
-    "dist"
+    "dist",
+    "LICENSE"
   ],
   "publishConfig": {
     "access": "public"
   },
-  "prettier": "@consenlabs/prettier",
+  "prettier": "@consenlabs-fe/prettier",
   "author": "@consenlabs",
   "license": "MIT",
   "devDependencies": {
@@ -27,14 +28,13 @@
     "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-typescript": "^7.12.7",
-    "@consenlabs/eslint-ts": "^0.2.2",
-    "@consenlabs/prettier": "^0.1.0",
+    "@consenlabs-fe/eslint-ts": "^0.2.3",
+    "@consenlabs-fe/prettier": "^0.1.2",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.1",
     "@types/jest": "^26.0.20",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
-    "axios-mock-adapter": "^1.19.0",
     "babel-jest": "^26.6.3",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
