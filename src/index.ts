@@ -8,10 +8,12 @@ import {
   isCancelError,
 } from './apis/utils'
 
+const isTokenEnv = (): boolean => isTokenWebView()
+
 const TokenWebView = {
   ERRORS,
 
-  isTokenEnv: (): boolean => isTokenWebView(),
+  isTokenEnv,
 
   isCancelError,
 
@@ -21,6 +23,16 @@ const TokenWebView = {
 
   getVersion,
 
+  apis,
+}
+
+export {
+  ERRORS,
+  isTokenEnv,
+  isCancelError,
+  compareSemver,
+  isGreaterThanOrEqualVersion,
+  getVersion,
   apis,
 }
 
