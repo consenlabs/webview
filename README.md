@@ -5,7 +5,7 @@ WebView utils for imToken application v2.
 You can use this utils to call the imToken App's public APIs,
 including features such as modifying title, route navigation, and support for `TypeScript`, `cjs`, `esm`, `umd`.
 
-Package size about `1kb` (gzipped), and no external dependences and no side effects.
+Package size about `1kb` (gzipped), no external dependences and no side effects.
 
 ### Installing
 
