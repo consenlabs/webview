@@ -1,6 +1,9 @@
 import { callAPI } from './utils'
 
 const user = {
+  /**
+   * Get the current language environment, e.g. "en-us".
+   */
   getCurrentLanguage: (): Promise<string> => {
     return new Promise((resolve, reject) => {
       callAPI('device.getCurrentLanguage', (err: Error, language: string) => {
@@ -10,6 +13,9 @@ const user = {
     })
   },
 
+  /**
+   * Get currency from user settings, e.g. "CNY".
+   */
   getCurrentCurrency: (): Promise<string> => {
     return new Promise((resolve, reject) => {
       callAPI('device.getCurrentCurrency', (err: Error, currency: string) => {

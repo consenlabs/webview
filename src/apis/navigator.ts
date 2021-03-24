@@ -32,6 +32,9 @@ const navigator = {
     callAPI('navigator.toggleNavbar')
   },
 
+  /**
+   * Navigate to a specfic screen.
+   */
   routeTo: ({ screen, props }: { screen: string; props: ScreenProps }): void => {
     callAPI('navigator.routeTo', {
       screen: screen,
@@ -39,6 +42,9 @@ const navigator = {
     })
   },
 
+  /**
+   * Get current screen Orientation.
+   */
   getOrientation: (): Promise<Orientation> => {
     return new Promise((resolve, reject) => {
       callAPI('navigator.getOrientation', (err: Error, result: 'LANDSCAPE' | 'PORTRAIT') => {
@@ -48,10 +54,16 @@ const navigator = {
     })
   },
 
+  /**
+   * Set screen Orientation.
+   */
   setOrientation: (orientation: Orientation): void => {
     callAPI('navigator.setOrientation', `${orientation}`.toLowerCase())
   },
 
+  /**
+   * Dynamically set dapp title. No effect to `document.title`.
+   */
   setTitle: (title: string) => {
     callAPI('navigator.setTitle', title)
   },

@@ -1,5 +1,8 @@
 import { ERRORS } from '../constants'
 
+/**
+ * Identify if the error was cancelled by the user himself.
+ */
 export const isCancelError = (error: Error | string) => {
   if (typeof error === 'string') {
     return error === ERRORS.USER_CANCEL
