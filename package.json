@@ -1,0 +1,23 @@
+{
+  "name": "package-template",
+  "version": "1.0.0",
+  "description": "Extensible templates for front-end public projects",
+  "main": "dist/index.js",
+  "author": "@consenlabs",
+  "license": "MIT",
+  "prettier": "@consenlabs-fe/prettier",
+  "scripts": {
+    "test": "exit 0",
+    "lint": "exit 0",
+    "build": "exit 0"
+  },
+  "engines": {
+    "node": ">=10.1.0"
+  },
+  "devDependencies": {
+    "@consenlabs-fe/prettier": "^0.1.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

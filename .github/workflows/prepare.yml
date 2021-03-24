@@ -1,0 +1,67 @@
+name: Prepare
+
+on:
+  pull_request:
+    types: [synchronize, opened, reopened, labeled]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  label:
+    name: Label
+    env:
+      READY_FOR_REVIEW: ${{ contains(github.event.pull_request.labels.*.name, 'ready-for-review') }}
+    runs-on: ubuntu-latest
+    steps:
+      - if: ${{ env.READY_FOR_REVIEW == 'false' }}
+        uses: ouzi-dev/commit-status-updater@v1.1.0
+        with:
+          status: "failure"
+          description: "Add <ready-for-review> label to run flows"
+          name: "Label Missing"
+  lint:
+    name: ESLint
+    needs: label
+    if: contains(github.event.pull_request.labels.*.name, 'ready-for-review')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: setup node
+        uses: actions/setup-node@v2
+      - name: install
+        run: yarn install --check-files --frozen-lockfile
+      - name: lint
+        run: yarn lint
+  test:
+    name: Tests
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: setup node
+        uses: actions/setup-node@v2
+      - name: install
+        run: yarn install --check-files --frozen-lockfile
+      - name: test
+        run: yarn test
+  build:
+    name: Build
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: setup node
+        uses: actions/setup-node@v2
+      - name: install
+        run: yarn install --check-files --frozen-lockfile
+      - name: build
+        run: yarn build
+
