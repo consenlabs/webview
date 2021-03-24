@@ -1,6 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: ['./node_modules/@consenlabs/eslint-ts/index', 'prettier'],
+  extends: ['./node_modules/@consenlabs-fe/eslint-ts/index', 'prettier'],
   env: {
     jest: true,
   },
