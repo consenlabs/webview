@@ -26,10 +26,16 @@ export interface OpenReturn {
 }
 
 const native = {
+  /**
+   * Call the native component, UI effects depend on the platform.
+   */
   alert: (content: string): void => {
     callAPI('native.alert', content)
   },
 
+  /**
+   * Call the native component, UI effects depend on the platform.
+   */
   confirm: (params: ConfirmParams): Promise<boolean> => {
     return new Promise(resolve => {
       callAPI('native.confirm', params, (err: Error) => {
@@ -39,11 +45,17 @@ const native = {
     })
   },
 
+  /**
+   * Set loading status. the loading layer blocks all events from user.
+   */
   setLoading: (visible: boolean): void => {
     const method = visible ? 'showLoading' : 'hideLoading'
     callAPI(`native.${method}`)
   },
 
+  /**
+   * Share image or url address.
+   */
   share: (params: ShareParams): Promise<OpenReturn> => {
     const input = !params.image
       ? params
@@ -60,6 +72,9 @@ const native = {
     })
   },
 
+  /**
+   * Call the native component, UI effects depend on the platform.
+   */
   scanQRCode: (): Promise<string> => {
     return new Promise((resolve, reject) => {
       callAPI('native.scanQRCode', (err: Error, text: string) => {
@@ -69,6 +84,9 @@ const native = {
     })
   },
 
+  /**
+   * Set the user's clipboard.
+   */
   setClipboard: (text: string): void => {
     callAPI('native.setClipboard', text)
   },

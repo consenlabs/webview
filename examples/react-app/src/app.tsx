@@ -9,6 +9,9 @@ const App = () => {
     setState(isToken)
     if (isToken) {
       setVersion(TokenWebView.getVersion())
+      TokenWebView.apis.device.getCurrentCurrency().then(res => {
+        console.log(res)
+      })
     }
   }, [])
 
