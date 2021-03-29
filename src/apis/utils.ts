@@ -69,3 +69,7 @@ export const isGreaterThanOrEqualVersion = (version: string): boolean => {
   const result = compareSemver(currentVersion, version)
   return !!(version && result >= 0)
 }
+
+export const removeHashPrefix = (val: any): string => {
+  return `${val}`.replace(/^#/, '')
+}
