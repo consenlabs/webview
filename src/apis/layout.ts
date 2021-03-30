@@ -3,7 +3,6 @@ import { callAPI, removeHashPrefix } from './utils'
 type LayoutAPIOptions = {
   hbg?: string
   hfg?: string
-  title?: string
   title_left?: boolean
   title_size?: number
   trans?: boolean
@@ -19,7 +18,6 @@ export type HexColor = `#${string}`
 export type WebViewLayoutOptions = {
   background?: HexColor
   foreground?: HexColor
-  title?: string
   isTitleLeft?: boolean
   titleSize?: number
   isTransparent?: boolean
@@ -33,7 +31,6 @@ export type WebViewLayoutOptions = {
 const headerMapKeys: Record<keyof WebViewLayoutOptions, keyof LayoutAPIOptions> = {
   background: 'hbg',
   foreground: 'hfg',
-  title: 'title',
   isTitleLeft: 'title_left',
   titleSize: 'title_size',
   isTransparent: 'trans',
@@ -68,18 +65,16 @@ const colorKeys: ColorKeys = [
 const hasColorKey = (key: string): boolean => colorKeys.includes(key)
 
 const layout = {
-  setOptions: (headerOptions: WebViewLayoutOptions): void => {
-    const params = Object.keys(headerOptions).reduce<WebViewLayoutOptions>(
+  setOptions: (options: WebViewLayoutOptions): void => {
+    const params = Object.keys(options).reduce<LayoutAPIOptions>(
       (pre, next: keyof WebViewLayoutOptions) => {
         const apiKey = headerMapKeys[next]
-        let val = headerOptions[next]
-        if (hasColorKey(next)) {
-          val = removeHashPrefix(val)
-        }
+        const val = options[next]
+        const valOrColor = hasColorKey(next) ? removeHashPrefix(val) : val
         if (!apiKey) return pre
         return {
           ...pre,
-          [apiKey]: val,
+          [apiKey]: valOrColor,
         }
       },
       {},
