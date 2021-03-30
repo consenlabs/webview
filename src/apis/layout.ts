@@ -1,7 +1,7 @@
 import { callAPI, removeHashPrefix } from './utils'
 
 type LayoutAPIOptions = {
-  hbg?: string
+  hbg?: string | string[]
   hfg?: string
   title_left?: boolean
   title_size?: number
@@ -16,7 +16,7 @@ type LayoutAPIOptions = {
 export type HexColor = `#${string}`
 
 export type WebViewLayoutOptions = {
-  background?: HexColor
+  background?: HexColor | Array<HexColor>
   foreground?: HexColor
   isTitleLeft?: boolean
   titleSize?: number
@@ -70,7 +70,7 @@ const layout = {
       (pre, next: keyof WebViewLayoutOptions) => {
         const apiKey = headerMapKeys[next]
         const val = options[next]
-        const valOrColor = hasColorKey(next) ? removeHashPrefix(val) : val
+        const valOrColor = hasColorKey(next) ? removeHashPrefix(val as string | string[]) : val
         if (!apiKey) return pre
         return {
           ...pre,
