@@ -70,6 +70,9 @@ export const isGreaterThanOrEqualVersion = (version: string): boolean => {
   return !!(version && result >= 0)
 }
 
-export const removeHashPrefix = (val: any): string => {
-  return `${val}`.replace(/^#/, '')
+const replaceHash = (str: string) => `${str}`.replace(/#/g, '')
+
+export const removeHashPrefix = (colors: string | string[]): string | string[] => {
+  if (!Array.isArray(colors)) return replaceHash(colors)
+  return colors.map(replaceHash)
 }

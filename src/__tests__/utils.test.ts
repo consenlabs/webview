@@ -1,5 +1,6 @@
 import { setupAPIs, resetAPIs, makeRandomString, getNum } from 'tests/utils'
 import TokenWebView from 'src/index'
+import { removeHashPrefix } from 'src/apis/utils'
 
 describe('utils', () => {
   beforeAll(() => {})
@@ -50,5 +51,20 @@ describe('utils', () => {
     expect(isError(nonstandardError)).toBe(true)
 
     expect(TokenWebView.isCancelError(new Error(makeRandomString()))).toBe(false)
+  })
+
+  it('should be replace all hash tags', () => {
+    const str = `#${makeRandomString()}#${makeRandomString()}#`
+    const result = removeHashPrefix(str)
+    expect(result).not.toContain('#')
+
+    const arr = [str, str, str]
+    const result2 = removeHashPrefix(arr)
+    expect(result2).toBeInstanceOf(Array)
+    expect(result2.includes('#')).not.toBeTruthy()
+
+    const notIncludeHash = `${makeRandomString()}`
+    const result3 = removeHashPrefix(notIncludeHash)
+    expect(result3).toEqual(notIncludeHash)
   })
 })
