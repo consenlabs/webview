@@ -11,9 +11,11 @@ type LayoutAPIOptions = {
   lfg?: string
   bbg?: string
   bfg?: string
+  sfg?: number
 }
 
 export type HexColor = `#${string}`
+export type StatusBarStyle = 0 | 1 | 2
 
 export type WebViewLayoutOptions = {
   background?: HexColor | Array<HexColor>
@@ -26,6 +28,7 @@ export type WebViewLayoutOptions = {
   loadingForeground?: HexColor
   bodyBackground?: HexColor
   bodyForeground?: HexColor
+  statusBarStyle?: StatusBarStyle
 }
 
 const headerMapKeys: Record<keyof WebViewLayoutOptions, keyof LayoutAPIOptions> = {
@@ -39,6 +42,7 @@ const headerMapKeys: Record<keyof WebViewLayoutOptions, keyof LayoutAPIOptions> 
   loadingForeground: 'lfg',
   bodyBackground: 'bbg',
   bodyForeground: 'bfg',
+  statusBarStyle: 'sfg',
 }
 
 type ColorKeys = Array<
