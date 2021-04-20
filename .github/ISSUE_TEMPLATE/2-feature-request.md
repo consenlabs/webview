@@ -1,7 +1,7 @@
 ---
-name: "Feature request"
-about: "I have a suggestion for a new feature."
------------------------------------------------
+name: 'Feature request'
+about: 'I have a suggestion for a new feature.'
+---
 
 # Feature request
 
@@ -13,7 +13,6 @@ I create this issue to request a new feature:
 
 ### Expected
 
- I wish this feature included...
+I wish this feature included...
 
 ### Online examples or screenshots
-

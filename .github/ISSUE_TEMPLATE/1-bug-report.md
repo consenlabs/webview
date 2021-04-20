@@ -1,7 +1,7 @@
 ---
-name: "Bug report"
+name: 'Bug report'
 about: "If something isn't working as expected."
-------------------------------------------------
+---
 
 # Bug report
 
@@ -9,7 +9,7 @@ I created this issue to report an error.
 
 ## Version & Environment
 
-  - `?` (please fill in this field)
+- `?` (please fill in this field)
 
 ## Behaviour and expectations
 
