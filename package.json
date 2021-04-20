@@ -1,6 +1,6 @@
 {
   "name": "@consenlabs-fe/webview",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -12,7 +12,7 @@
     "clear": "rm -rf dist",
     "lint": "eslint \"{src,tests}/**/*.{js,ts,tsx}\"",
     "build": "yarn clear && rollup -c",
-    "release": "yarn build && yarn publish --access public --non-interactive"
+    "release": "yarn build && yarn publish --verbose --access public --non-interactive"
   },
   "files": [
     "dist",
