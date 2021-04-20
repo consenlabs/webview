@@ -48,6 +48,6 @@ jobs:
       - name: publish
         run: |
           echo ">> dist-tag: ${{ env.r_tag }}"
-          yarn publish --tag ${{ env.r_tag }}
+          yarn release --tag ${{ env.r_tag }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}

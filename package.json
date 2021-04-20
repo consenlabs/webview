@@ -12,15 +12,12 @@
     "clear": "rm -rf dist",
     "lint": "eslint \"{src,tests}/**/*.{js,ts,tsx}\"",
     "build": "yarn clear && rollup -c",
-    "release": "yarn build && yarn publish --non-interactive"
+    "release": "yarn build && yarn publish --access public --non-interactive"
   },
   "files": [
     "dist",
     "LICENSE"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "prettier": "@consenlabs-fe/prettier",
   "author": "@consenlabs",
   "license": "MIT",
