@@ -47,7 +47,7 @@ if (TokenWebView.isTokenEnv()) {
 
 ### Documention
 
-- [Official API Documentation](https://imtoken.gitbook.io/developers/products/imtoken/webview)
+- [Official API Documentation](https://imtoken.gitbook.io/developers/products/webview)
 
 ### License
 
