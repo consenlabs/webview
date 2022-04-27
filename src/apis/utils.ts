@@ -1,15 +1,24 @@
 import { ERRORS } from '../constants'
 
+export interface StandardError extends Error  {
+  code: number
+  errorCode?: number // deprecated
+}
+
+const isStandardError = <T extends StandardError>(error: T): boolean =>  error.code !== undefined
+
 /**
  * Identify if the error was cancelled by the user himself.
  */
-export const isCancelError = (error: Error | string) => {
+export const isCancelError = (error: StandardError | string) => {
   if (typeof error === 'string') {
     return error === ERRORS.USER_CANCEL
   }
 
   if (error.message === ERRORS.USER_CANCEL) return true
-  return (error as any).errorCode === 1001
+
+  const isCancel = (error: StandardError) => isStandardError(error) ? error.code === 4001 : error?.errorCode === 1001
+  return isCancel(error)
 }
 
 export const isTokenWebView = (): boolean => {
