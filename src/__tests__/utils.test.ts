@@ -45,7 +45,7 @@ describe('utils', () => {
     expect(TokenWebView.isCancelError(new Error(TokenWebView.ERRORS.USER_CANCEL))).toBe(true)
 
     const nonstandardError = {
-      errorCode: 1001,
+      code: 4001,
     }
     const isError = TokenWebView.isCancelError as any
     expect(isError(nonstandardError)).toBe(true)
